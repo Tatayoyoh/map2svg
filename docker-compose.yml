@@ -1,0 +1,41 @@
+version: "2"
+services:
+  postgres:
+    image: "openmaptiles/postgis:7.0"
+    volumes:
+    - pgdata:/var/lib/postgresql/data
+    networks:
+    - postgres_conn
+    ports:
+     - "5432:5432"
+    env_file: .env
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    networks:
+      - postgres_conn
+    ports:
+     - "8432:80"
+    environment:
+      - "PGADMIN_DEFAULT_EMAIL=admin@admin.org"
+      - "PGADMIN_DEFAULT_PASSWORD=admin"
+    volumes:
+      - pgadmindata:/var/lib/pgadmin
+  
+  import-tools:
+    image: "openmaptiles/openmaptiles-tools:7.0"
+    env_file: .env
+    networks:
+    - postgres_conn
+    volumes:
+     - ./data:/import
+     - ./build:/mapping
+     - ./cache:/cache
+
+
+volumes:
+  pgdata:
+  pgadmindata:
+networks:
+  postgres_conn:
+    driver: bridge
