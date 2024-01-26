@@ -4,6 +4,8 @@ cache/*
 !cache/.gitkeep
 data/*
 !data/.gitkeep
+build/*
+!build/mapping.yaml
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -14,7 +16,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -126,7 +127,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+
 .venv
 env/
 venv/
