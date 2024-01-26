@@ -10,7 +10,7 @@ Inspired from https://github.com/piebro/map2svg, thanks to [piebro](https://gith
   
     * you can get .osm.pbf files them from <http://download.geofabrik.de/>
 
-3. import OSM datas with `docker-compose run import-osm`
+3. import OSM datas with `docker compose run import-tools import-osm`
 
 
 ## create svg
